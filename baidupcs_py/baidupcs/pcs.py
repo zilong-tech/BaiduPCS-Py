@@ -11,6 +11,8 @@ import json
 import time
 import random
 import urllib
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 import requests  # type: ignore
 from requests_toolbelt import MultipartEncoder, MultipartEncoderMonitor
@@ -200,6 +202,7 @@ class BaiduPCS:
                 headers=headers,
                 data=data,
                 files=files,
+                verify=False,
                 **kwargs,
             )
             return resp
